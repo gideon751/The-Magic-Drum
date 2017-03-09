@@ -52,6 +52,7 @@ public class aiEasy : MonoBehaviour {
 	}
 
 
+
 	void lookAtPlayer(){
 		Quaternion rotation = Quaternion.LookRotation (fpsTarget.position - transform.position);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * damping);

@@ -44,17 +44,21 @@ public class EnemyMovement : MonoBehaviour {
 
 	}
 
+	void lookAtNextPoint(Transform target){
+		Quaternion rotation = Quaternion.LookRotation (target.position - transform.position);
+		transform.rotation = transform.rotation;
+	}
+
 	public void FirstMove()
 	{
-
+		print ("moving to second point");
+		lookAtNextPoint (cutscenePos[1]);
 		currentLerpTime[0] += Time.deltaTime;
 		if (currentLerpTime[0] >= lerpTime) 
 		{
 			currentLerpTime[0] = lerpTime;
 			start = false;
 			StartCoroutine (FirstWait ());
-
-
 		}
 
 		float percent = currentLerpTime[0] / lerpTime;
@@ -66,13 +70,12 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (Random.Range(0f, 4f));
 		start02 = true;
-
 	}
 
 
 	public void SecondMove()
 	{
-
+		lookAtNextPoint (cutscenePos[2]);
 		currentLerpTime[1] += Time.deltaTime;
 		if (currentLerpTime[1] >= lerpTime02) 
 		{
@@ -94,6 +97,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	public void ThirdMove()
 	{
+		lookAtNextPoint (cutscenePos[3]);
 		currentLerpTime[2] += Time.deltaTime;
 		if (currentLerpTime[2] >= lerpTime03) 
 		{
@@ -115,7 +119,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	public void FourthMove()
 	{
-
+		lookAtNextPoint (cutscenePos[0]);
 		currentLerpTime[3] += Time.deltaTime;
 		if (currentLerpTime[3] >= lerpTime03) 
 		{
