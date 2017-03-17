@@ -27,19 +27,25 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		if (start) 
 		{
+
+
 			FirstMove ();
+			transform.LookAt (cutscenePos [1]);
 		}
 		if (start02) 
 		{
 			SecondMove ();
+			transform.LookAt (cutscenePos [2]);
 		}
 		if (start03) 
 		{
 			ThirdMove ();
+			transform.LookAt (cutscenePos [3]);
 		}
 		if (start04) 
 		{
 			FourthMove ();
+			transform.LookAt (cutscenePos [0]);
 		}
 
 	}
@@ -126,6 +132,7 @@ public class EnemyMovement : MonoBehaviour {
 			currentLerpTime[3] = lerpTime04;
 			start04 = false;
 			StartCoroutine (FourthWait ());
+
 		}
 
 		float percent04 = currentLerpTime[3] / lerpTime04;
